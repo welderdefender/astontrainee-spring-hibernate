@@ -101,34 +101,40 @@ public class Flight {
         public Builder() {
         }
 
-        public void setFlightId(Integer flightId) {
+        public Builder setFlightId(Integer flightId) {
             this.flightId = flightId;
+            return this;
         }
 
-        public void setCompany(Company company) {
+        public Builder setCompany(Company company) {
             this.company = company;
+            return this;
         }
 
-        public void setAirportCodes(AirportCodes airportCodes) {
+        public Builder setAirportCodes(AirportCodes airportCodes) {
             this.airportCodes = airportCodes;
+            return this;
         }
 
-        public void setFlightDate(String flightDate) {
+        public Builder setFlightDate(String flightDate) {
             this.flightDate = flightDate;
+            return this;
         }
 
-        public void setFlightFrom(String flightFrom) {
+        public Builder setFlightFrom(String flightFrom) {
             this.flightFrom = flightFrom;
+            return this;
         }
 
-        public void setFlightTo(String flightTo) {
+        public Builder setFlightTo(String flightTo) {
             this.flightTo = flightTo;
+            return this;
         }
 
         public Flight build() {
             Flight flight = new Flight();
-            flight.flightId = this.flightId;
             flight.company = this.company;
+            flight.flightId = this.flightId;
             flight.airportCodes = this.airportCodes;
             flight.flightDate = this.flightDate;
             flight.flightFrom = this.flightFrom;
