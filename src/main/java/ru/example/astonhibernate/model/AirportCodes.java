@@ -13,11 +13,11 @@ public class AirportCodes {
     @Column(name = "airport_code_name")
     private String airportCodeName;
 
-    public void setAirportCodeId(int airportCodeId) {
-        this.airportCodeId = airportCodeId;
+    public AirportCodes() {
     }
 
-    public void setAirportCodeName(String airportCodeName) {
+    public AirportCodes(int airportCodeId, String airportCodeName) {
+        this.airportCodeId = airportCodeId;
         this.airportCodeName = airportCodeName;
     }
 
@@ -25,8 +25,16 @@ public class AirportCodes {
         return airportCodeId;
     }
 
+    public void setAirportCodeId(int airportCodeId) {
+        this.airportCodeId = airportCodeId;
+    }
+
     public String getAirportCodeName() {
         return airportCodeName;
+    }
+
+    public void setAirportCodeName(String airportCodeName) {
+        this.airportCodeName = airportCodeName;
     }
 
     @Override
