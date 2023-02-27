@@ -17,7 +17,7 @@ public class FlightRepository {
     public List<Flight> getAllFlights() {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        List<Flight> flights = session.createQuery("from flights ").getResultList();
+        List<Flight> flights = session.createQuery("from Flight ").getResultList();
         session.getTransaction().commit();
         return flights;
     }
@@ -41,7 +41,7 @@ public class FlightRepository {
         Session session = sessionFactory.getCurrentSession();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("delete from flights where flight_id = :id");
+            Query query = session.createQuery("delete from Flight where flightId = :id");
             query.setParameter("id", id);
             query.executeUpdate();
             session.getTransaction().commit();
@@ -53,8 +53,8 @@ public class FlightRepository {
     public List<Flight> getUsersFlights() {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        List<Flight> flights = session.createQuery("SELECT DISTINCT FROM " +
-                "flights f JOIN FETCH f.users").getResultList();
+        List<Flight> flights = session.createQuery("SELECT DISTINCT f FROM " +
+                "Flight f JOIN FETCH f.users").getResultList();
         session.getTransaction().commit();
         return flights;
     }

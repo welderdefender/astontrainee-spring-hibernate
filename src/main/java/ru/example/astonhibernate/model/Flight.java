@@ -1,6 +1,6 @@
 package ru.example.astonhibernate.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -12,11 +12,11 @@ public class Flight {
     private int flightId;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company")
     private Company company;
 
     @ManyToOne
-    @JoinColumn(name = "airport_code_id")
+    @JoinColumn(name = "airport_code")
     private AirportCodes airportCodes;
 
     @Column(name = "flight_date")

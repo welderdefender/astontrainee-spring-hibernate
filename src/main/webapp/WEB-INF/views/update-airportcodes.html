@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать код аэропорта</title>
+</head>
+<body>
+<h1>Редактировать</h1>
+<form th:object="${airportcodes}" th:action="@{/airportcodes/update/{id}(id=${airportcodes.getAirportCodeId})}"
+      method="post">
+    <label for="airportCodeName">Новый код</label>
+    <input type="text" id="airportCodeName" th:field="*{airportCodeName}" required>
+    <br>
+    <br>
+    <input type="submit" value="Обновить">
+</form>
+</body>
+</html>

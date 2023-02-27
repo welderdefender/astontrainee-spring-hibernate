@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users Flights</title>
+</head>
+<body>
+<div th:each="flight : ${flights}">
+    <a th:href="@{/flight/{id}(id=${flight.getFlightId()})}"
+       th:text="'User ID=' + ${flight.getUserId()} + ' Flight ID=' + ${flight.getFlightId()} + ' User Name=' + ${flight.getUserName()} + ' User Age =' + ${flight.getUserAge()}">userflights</a>
+</div>
+<br/>
+<hr/>
+<h3>Таблицы:</h3>
+<a href="/spring-mvc-hibernate/flight">Рейсы</a> <br/>
+<a href="/spring-mvc-hibernate/user">Пользователи</a><br/>
+<a href="/spring-mvc-hibernate/flight/userflights">Many-to-many (Рейсы, Пользователи)</a><br/>
+<a href="/spring-mvc-hibernate/company">Авиакомпании</a><br/>
+<a href="/spring-mvc-hibernate/airportcodes">Коды аэропортов</a><br/>
+</body>
+</html>

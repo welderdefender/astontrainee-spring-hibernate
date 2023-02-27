@@ -16,7 +16,7 @@ public class CompanyRepository {
     public List<Company> getAllCompany() {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        List<Company> companies = session.createQuery("from company ").getResultList();
+        List<Company> companies = session.createQuery("from Company ").getResultList();
         session.getTransaction().commit();
         return companies;
     }
@@ -48,7 +48,7 @@ public class CompanyRepository {
         Session session = sessionFactory.getCurrentSession();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("delete from company where company_id = :id");
+            Query query = session.createQuery("delete from Company where companyId = :id");
             query.setParameter("id", id);
             query.executeUpdate();
             session.getTransaction().commit();

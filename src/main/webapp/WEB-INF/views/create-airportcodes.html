@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый код аэропорта</title>
+</head>
+<body>
+<form action="#" th:action="@{/airportcodes/create}" method="post">
+    <label for="airportCodeName">Код аэропорта:</label>
+    <input type="text" id="airportCodeName" name="airportCodeName" required>
+    <input type="submit" value="Создать">
+    <br/>
+    <hr/>
+    <h3>Таблицы:</h3>
+    <a href="/spring-mvc-hibernate/flight">Рейсы</a> <br/>
+    <a href="/spring-mvc-hibernate/user">Пользователи</a><br/>
+    <a href="/spring-mvc-hibernate/flight/userflights">Many-to-many (Рейсы, Пользователи)</a><br/>
+    <a href="/spring-mvc-hibernate/company">Авиакомпании</a><br/>
+    <a href="/spring-mvc-hibernate/airportcodes">Коды аэропортов</a><br/>
+</form>
+</body>
+</html>
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить пользователя</title>
+</head>
+<body>
+<form th:object="${user}" th:action="@{/user/update/{id}(id=${user.getUserId})}" method="post">
+    <label for="name">Имя: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <label for="age">Возраст: </label>
+    <input type="number" th:field="*{age}" id="age"/>
+    <br/>
+    <input type="submit" value="Обновить"/>
+</form>
+</body>
+</html>

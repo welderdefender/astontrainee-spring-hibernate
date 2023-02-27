@@ -16,7 +16,7 @@ public class AirportCodesRepository {
     public List<AirportCodes> getAllAirportCodes() {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        List<AirportCodes> airportCodes = session.createQuery("from airport_codes ").getResultList();
+        List<AirportCodes> airportCodes = session.createQuery("from AirportCodes ").getResultList();
         session.getTransaction().commit();
         return airportCodes;
     }
@@ -40,7 +40,7 @@ public class AirportCodesRepository {
         Session session = sessionFactory.getCurrentSession();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("delete from airport_codes where airport_code_id = :id");
+            Query query = session.createQuery("delete from AirportCodes where airportCodeId = :id");
             query.setParameter("id", id);
             query.executeUpdate();
             session.getTransaction().commit();

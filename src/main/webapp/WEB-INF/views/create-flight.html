@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый рейс</title>
+</head>
+<body>
+<form action="#" th:action="@{/flight/create}" method="post">
+    <label for="company">Авиакомпания:</label>
+    <select id="company" name="company" required>
+        <option value="">Выберите авиакомпанию:</option>
+        <option th:each="company : ${companies}"
+                th:value="${company.getCompanyId()}"
+                th:text="${company.getName()}">
+        </option>
+    </select>
+    <br><br>
+    <label for="airportCodes">Код аэропорта:</label>
+    <select id="airportCodes" name="airportCodes" required>
+        <option value="">Выберите код аэропорта</option>
+        <option th:each="airportcode : ${airportcodes}"
+                th:value="${airportcode.getAirportCodeId()}"
+                th:text="${airportcode.getAirportCodeName()}">
+        </option>
+    </select>
+    <br><br>
+    <label for="flightDate">Дата рейса:</label>
+    <input type="text" id="flightDate" name="flightDate" required>
+    <label for="flightFrom">Вылет из:</label>
+    <input type="text" id="flightFrom" name="flightFrom" required>
+    <label for="flightTo">Прилёт в:</label>
+    <input type="text" id="flightTo" name="flightTo" required>
+    <input type="submit" value="Создать">
+    <br/>
+    <hr/>
+    <h3>Таблицы:</h3>
+    <a href="/spring-mvc-hibernate/flight">Рейсы</a> <br/>
+    <a href="/spring-mvc-hibernate/user">Пользователи</a><br/>
+    <a href="/spring-mvc-hibernate/flight/userflights">Many-to-many (Рейсы, Пользователи)</a><br/>
+    <a href="/spring-mvc-hibernate/company">Авиакомпании</a><br/>
+    <a href="/spring-mvc-hibernate/airportcodes">Коды аэропортов</a><br/>
+</form>
+</body>
+</html>

@@ -16,7 +16,7 @@ public class UserRepository {
     public List<User> getAllUser() {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        List<User> users = session.createQuery("from users ").getResultList();
+        List<User> users = session.createQuery("from User ").getResultList();
         session.getTransaction().commit();
         return users;
     }

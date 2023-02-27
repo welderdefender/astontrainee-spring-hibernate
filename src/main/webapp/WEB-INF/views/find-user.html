@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+</head>
+<body>
+<p th:text="${user.getUserId()}">VALUE</p>
+<p th:text="${user.getName()}">VALUE</p>
+<a th:href="@{/user/update/{id}(id=${user.getUserId()})}">Редактировать</a>
+<br>
+<form th:action="@{/user/delete/{id}(id=${user.userId})}" method="post">
+    <button type="submit">Удалить</button>
+</form>
+<br/>
+<hr/>
+<h3>Таблицы:</h3>
+<a href="/spring-mvc-hibernate/flight">Рейсы</a> <br/>
+<a href="/spring-mvc-hibernate/user">Пользователи</a><br/>
+<a href="/spring-mvc-hibernate/flight/userflights">Many-to-many (Рейсы, Пользователи)</a><br/>
+<a href="/spring-mvc-hibernate/company">Авиакомпании</a><br/>
+<a href="/spring-mvc-hibernate/airportcodes">Коды аэропортов</a><br/>
+</body>
+</html>

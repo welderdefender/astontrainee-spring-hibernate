@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактировать авиакомпанию</title>
+</head>
+  <body>
+  <h1>Редактировать</h1>
+  <form th:object="${company}" th:action="@{/company/update/{id}(id=${company.getCompanyId})}" method="post">
+    <label for="name">Новое название</label>
+    <input type="text" id="name" th:field="*{name}" required>
+    <br>
+    <br>
+    <input type="submit" value="Обновить">
+  </form>
+  </body>
+</html>

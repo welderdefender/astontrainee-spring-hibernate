@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Код аэропорта</title>
+</head>
+<body>
+<p th:text="${airportcodes.getAirportCodeId()}">VALUE</p>
+<p th:text="${airportcodes.getAirportCodeName()}">VALUE</p>
+<a th:href="@{/airportcodes/update/{id}(id=${airportcodes.getAirportCodeId()})}">Редактировать</a>
+<form th:method="DELETE" th:action="@{/airportcodes/{id}(id=${airportcodes.getAirportCodeId()})}">
+    <input type="submit" value="Удалить"/>
+</form>
+<br/>
+<hr/>
+<h3>Таблицы:</h3>
+<a href="/spring-mvc-hibernate/flight">Рейсы</a> <br/>
+<a href="/spring-mvc-hibernate/user">Пользователи</a><br/>
+<a href="/spring-mvc-hibernate/flight/userflights">Many-to-many (Рейсы, Пользователи)</a><br/>
+<a href="/spring-mvc-hibernate/company">Авиакомпании</a><br/>
+<a href="/spring-mvc-hibernate/airportcodes">Коды аэропортов</a><br/>
+</body>
+</html>
