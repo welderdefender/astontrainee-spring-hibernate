@@ -5,6 +5,9 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import ru.example.astonhibernate.model.AirportCodes;
+import ru.example.astonhibernate.model.Company;
+import ru.example.astonhibernate.model.Flight;
+import ru.example.astonhibernate.model.User;
 
 public class HibernateConfig {
     public static SessionFactory createSessionFactory() {

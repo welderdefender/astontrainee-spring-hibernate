@@ -1,6 +1,7 @@
 package ru.example.astonhibernate.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "airport_codes")
@@ -12,6 +13,9 @@ public class AirportCodes {
 
     @Column(name = "airport_code_name")
     private String airportCodeName;
+
+    @OneToMany(mappedBy = "airportcodes")
+    private List<Flight> flights;
 
     public AirportCodes() {
     }
@@ -35,6 +39,14 @@ public class AirportCodes {
 
     public void setAirportCodeName(String airportCodeName) {
         this.airportCodeName = airportCodeName;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
     }
 
     @Override
