@@ -5,8 +5,10 @@ import org.springframework.stereotype.Component;
 import ru.example.astonhibernate.model.AirportCodes;
 import ru.example.astonhibernate.model.Company;
 import ru.example.astonhibernate.model.Flight;
+import ru.example.astonhibernate.model.User;
 import ru.example.astonhibernate.model.dto.flight.FlightDtoRq;
 import ru.example.astonhibernate.model.dto.flight.FlightDtoRs;
+import ru.example.astonhibernate.model.dto.users_flights.UsersFlightsDtoRs;
 import ru.example.astonhibernate.repository.AirportCodesRepository;
 import ru.example.astonhibernate.repository.CompanyRepository;
 
@@ -41,5 +43,12 @@ public class FlightMapper {
                 flight.getFlightDate(),
                 flight.getFlightFrom(),
                 flight.getFlightTo());
+    }
+
+    public UsersFlightsDtoRs toUsersFlightsDto(User user, Flight flight) {
+        return new UsersFlightsDtoRs(user.getUserId(),
+                flight.getFlightId(),
+                user.getName(),
+                user.getAge());
     }
 }

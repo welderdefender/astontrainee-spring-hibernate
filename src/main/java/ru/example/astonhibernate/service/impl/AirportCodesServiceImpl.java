@@ -1,46 +1,48 @@
 package ru.example.astonhibernate.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.example.astonhibernate.dao.AirportCodeDao;
-import ru.example.astonhibernate.model.AirportCodes;
+import ru.example.astonhibernate.model.dto.airportCodes.AirportCodesDtoRq;
+import ru.example.astonhibernate.model.dto.airportCodes.AirportCodesDtoRs;
+import ru.example.astonhibernate.model.mapper.AirportCodesMapper;
+import ru.example.astonhibernate.repository.AirportCodesRepository;
 import ru.example.astonhibernate.service.AirportCodesService;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AirportCodesServiceImpl implements AirportCodesService {
-    private AirportCodeDao airportCodeDao;
+    private final AirportCodesRepository airportCodesRepository;
+    private final AirportCodesMapper airportCodesMapper;
 
-
-    public void setAirportCodeDao(AirportCodeDao airportCodeDao) {
-        this.airportCodeDao = airportCodeDao;
+    @Autowired
+    public AirportCodesServiceImpl(AirportCodesRepository airportCodesRepository,
+                                   AirportCodesMapper airportCodesMapper) {
+        this.airportCodesRepository = airportCodesRepository;
+        this.airportCodesMapper = airportCodesMapper;
     }
 
-    @Transactional
-    public void addAirportCode(AirportCodes airportCodes) {
-        this.airportCodeDao.addAirportCode(airportCodes);
+    @Override
+    public void saveOrUpdateAirportCodes(AirportCodesDtoRq airportCodesDtoRq) {
+        airportCodesRepository.saveOrUpdateAirportCodes(airportCodesMapper.fromDto(airportCodesDtoRq));
     }
 
-    @Transactional
-    public void updateAirportCode(AirportCodes airportCodes) {
-        this.airportCodeDao.updateAirportCode(airportCodes);
-
+    @Override
+    public List<AirportCodesDtoRs> getAllAirportCodes() {
+        return airportCodesRepository.getAllAirportCodes()
+                .stream()
+                .map(airportCodesMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    @Transactional
-    public void removeAirportCode(int id) {
-        this.airportCodeDao.removeAirportCode(id);
-
+    @Override
+    public AirportCodesDtoRs getAirportCodesById(Integer id) {
+        return airportCodesMapper.toDto(airportCodesRepository.findAirportCodesById(id));
     }
 
-    @Transactional
-    public AirportCodes getById(int id) {
-        return this.airportCodeDao.getById(id);
-    }
-
-    @Transactional
-    public List<AirportCodes> listOfAirportCodes() {
-        return this.airportCodeDao.listOfAirportCodes();
+    @Override
+    public void deleteAirportCodes(Integer id) {
+        airportCodesRepository.deleteAirportCodesById(id);
     }
 }
